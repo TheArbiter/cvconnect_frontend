@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>Profile</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/global_vars.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/logout.js"></script>
+    <script src="https://use.fontawesome.com/ee84780899.js"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../bootstrap/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!--<link href="../css/dashboard.css" rel="stylesheet"> -->
+    <link href="../css/toolkit.css" rel="stylesheet">
+    <link href="../css/application.css" rel="stylesheet">
+    <link href="../css/profile.css" rel="stylesheet">
+    <link href="../css/datepicker.css" rel="stylesheet">
+
+    <!-- Bootstrap form helpers taken from http://js.nicdn.de/bootstrap/formhelpers/docs/country.html -->
+    <!-- Bootstrap Form Helpers -->
+    <link href="../css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" id="cvconnect-banner" href="#">CVConnect</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="homelink" href="#">Home</a></li>
+            <li><a id="profile-link"href="#">Profile</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Jobs
+              </a> 
+              <ul class="dropdown-menu" aria-labelledby="settings">
+                <li id="job-postings"><a href="#">Job Postings</a></li>
+                <li id="create-new-job"><a href="#">Create New Job</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Settings
+              </a> 
+              <ul class="dropdown-menu" aria-labelledby="settings">
+                <li id="edit-settings"><a href="#">Edit Details</a></li>
+                <li id="logout"><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input id="search-bar" type="text" class="form-control" placeholder="Search...">
+            <button id="submit-search" type="submit" name="submit-search">Search</button>
+          </form>
+        </div><!-- ./navbar-collapse --> 
+      </div><!-- ./container-fluid -->
+    </nav>
+
+
+    <div style="margin-top: 40px; margin-bottom: 20px;">
+
+      <div class="by amt">
+        <div class="gc">
+          <!-- left area -->
+          <div class="gn">
+            <div class="qv rc aog alu">
+              <div class="qx" style="background-image: url(../img/cover.png);"></div>
+              <div class="qw dj">
+                <a href="#">
+                  <img
+                    class="aoh"
+                    id="profile-image-slot"
+                    src="">
+                </a>
+                <h5 class="qy">
+	                <!-- <h1 id="username"></h1> -->
+                  <a class="aku" href="#" id="username"></a>
+                </h5>
+                <!-- Need an id tag for the role previous version didnt have an id -->
+                <!-- should display current role -->
+                <p id="mr-position" class="alu"></p>
+
+                <ul class="aoi">
+                  <li class="aoj">
+                    <a href="#connectionsModal" class="aku" data-toggle="modal" id="connections">Connections</a>
+                  </li>
+                  <li class="aoj">
+                    <a href="#myModal" class="aku" data-toggle="modal" id="cv">CV</a>
+                  </li>
+                </ul>
+                <ul class="aoi">
+                  <li class="aoj">
+                      <a href="#edit_cv" class="aku" data-toggle="tab" id="edit_cv_tab">Edit CV</a>
+                    </li>
+                    <li class="aoj">
+                      <a href="#feed" class="aku" data-toggle="tab" id="view_feed_tab">View Feed</a>
+                    </li>
+                </ul>
+
+                <div class="aoa">
+                  <button class="cg ts fx" id="follow_button">
+                    <span class="h vc"></span> Follow</button>
+		                <!--<button id="follow_button" value="Follow" class="follow_btn" >Follow</button>-->
+                </div>
+
+              </div><!-- ./qw dj -->
+            </div><!-- qv rc aog alu -->
+
+            <div class="qv rc sm sp">
+              <div class="qw">
+                <h5 class="ald">About</h5>
+                <ul class="eb tb">
+                  <li><span class="dp h xh all"></span>Went to <ins id="mr-edu"></ins>
+                  <li><span class="dp h abu all"></span>Worked at <ins id="mr-job"></ins>
+                  <li><span class="dp h ack all"></span>Lives in <ins id="country-from"></ins>
+                  <li><span class="dp h ack all"></span><ins id="contact"></ins>
+                </ul>
+              </div>
+            </div>
+
+          </div><!-- ./gn left area -->
+
+          <!-- middle area -->
+          <div class="gz">
+            <ul class="ca qo anx">
+              <div class="tab-content">
+              <div id="feed" class="tab-pane fade in active">
+
+              </div><!-- ./tab-pane fade in active -->
+              <div id="edit_cv" class="tab-pane fade">
+              <!-- ++++ EMPLOYMENT ++++ -->
+                <h3>Employment History</h3>
+                <div id="field">
+                  <div id="field0">
+                  <!-- Company Name input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="company_name">Company Name</label>
+                      <div class="col-md-8">
+                        <input id="company_name" name="company_name" type="text" placeholder="" class="form-control input-md">
+                      </div>
+                    </div>
+                    <br><br>
+                    <!-- Title input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="title">Title</label>
+                      <div class="col-md-8">
+                        <input id="title" name="title" type="text" placeholder="" class="form-control input-md">
+                      </div>
+                    </div>
+                    <br><br>
+                    <!-- Location input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="location">Location</label>
+                      <div class="col-md-8">
+                        <input id="location" name="location" type="text" placeholder="" class="form-control input-md">
+                      </div>
+                    </div>
+                    <br><br>
+                    <!-- Date input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="time_period">Time Period</label>
+                      <div class="col-md-4">
+                        <select class="form-control" id="start_month">
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <input id="time_period_start_year" class="date-own form-control"  type="text" placeholder="Start Year">
+                      </div>
+                      <!-- hack to keep the form fields bigger -->
+                      <div class="col-md-4"></div>
+
+                      <div class="col-md-4">
+                        <select class="form-control" id="end_month">
+                          <option>January</option>
+                          <option>February</option>
+                          <option>March</option>
+                          <option>April</option>
+                          <option>May</option>
+                          <option>June</option>
+                          <option>July</option>
+                          <option>August</option>
+                          <option>September</option>
+                          <option>October</option>
+                          <option>November</option>
+                          <option>December</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <input id="time_period_end_year" class="date-own form-control"  type="text" placeholder="End Year">
+                      </div>
+                    </div>
+                    <br><br><br>
+                    <!-- Description input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="employment_description">Description</label>
+                      <div class="col-md-8">
+                        <textarea class="form-control" id="employment_description" rows="3"></textarea>
+                      </div>
+                    </div>
+                    <br><br>
+                    <div class="checkbox">
+                      <label><input type="checkbox" id="currently_working">I currently Work here</label>
+                    </div>
+                  </div><!-- ./field0 -->
+                </div><!-- ./field -->
+                <!-- Button -->
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <button id="save-employment" name="save-employment" class="btn btn-primary">Save</button>
+                 <!--   <button id="add-more" name="add-more" class="btn btn-primary">Add More</button> -->
+                  </div>
+                </div>
+                <br></br>
+
+                <!-- ++++ EDUCATION ++++ -->
+                <h3>Education History</h3>
+                <div id="school">
+                  <div id="school0">
+                    <!-- School Name input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="school_name">School Name</label>
+                      <div class="col-md-8">
+                        <input id="school_name" name="school_name" type="text" placeholder="" class="form-control input-md">
+                      </div>
+                    </div>
+                    <br><br>
+                    <!-- Date input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="dates_attended">Dates Attended</label>
+                      <div class="col-md-4">
+                        <input id="school_start_year" class="date-own form-control"  type="text" placeholder="Start Year">
+                      </div>
+                      <div class="col-md-4">
+                        <input id="school_end_year" class="date-own form-control"  type="text" placeholder="End Year">
+                      </div>
+                    </div>
+                    <br><br>
+                    <!-- Degree input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="degree">Degree</label>
+                      <div class="col-md-8">
+                        <input id="degree" name="degree" type="text" placeholder="" class="form-control input-md">
+                      </div>
+                    </div>
+                    <br><br>
+                    <!-- Feild of study input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="field_of_study">Field of Study</label>
+                      <div class="col-md-8">
+                        <input id="field_of_study" name="field_of_study" type="text" placeholder="" class="form-control input-md">
+                      </div>
+                    </div>
+                    <br><br>
+                    <!-- Activities & Societies input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="activities">Activities and Societies</label>
+                      <div class="col-md-8">
+                        <textarea class="form-control" id="activities" rows="3"></textarea>
+                      </div>
+                    </div>
+                    <br><br><br>
+                    <!-- Description input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="school_description">Description</label>
+                      <div class="col-md-8">
+                        <textarea class="form-control" id="school_description" rows="3"></textarea>
+                      </div>
+                    </div>
+                    <br><br><br><br>
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label><input type="checkbox" id="currently_studying">I currently Study here</label>
+                      </div>
+                    </div>
+                  </div><!-- ./school0 -->
+                </div><!-- ./school1 -->
+                
+                <!-- Button -->
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <input id="save-education" name="save-education" class="btn btn-primary" type="submit" value="Save">
+           <!--         <button id="add-more-school" name="add-more-school" class="btn btn-primary">Add More</button> -->
+                  </div>
+                </div>
+                <br><br>
+              <!-- ++++ SKILLS ++++ -->
+              <!-- wanted to get tags for this but couldnt get it working :( -->
+              <!-- Skills input-->
+                <h3>Skills</h3>
+                <div class="container">
+                  <div class="row clearfix">
+		                <div class="col-md-6 column">
+                          <input type="text" id="skills_input" name='skill0'  placeholder='Skill' class="form-control"/></td>
+                          <input type="text" id="skills_proficiency" name='proficiency0' placeholder='Proficiency 1 - 5' class="form-control"/></td>
+					      <!-- Button -->
+                          <div class="form-group">
+                            <div class="col-md-4">
+                              <button id="save-skill" name="save-skill" class="btn btn-primary">Save</button>
+
+                            </div>
+                          </div>
+		                </div><!-- ./col-md-6-column -->
+	                </div><!-- ./row clearfix -->
+                </div><!-- ./container -->
+
+                <!--
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" id="skills_input" data-role="tagsinput"></input>
+                    <input class="btn btn-primary" id="add-skill" type="submit" value="Add Skill">
+                  </div>
+                </div>
+                -->
+              </div><!--./tab-pane fade -->
+              </div><!--./tab-content -->
+            </ul><!-- ./ca qo anx -->
+
+            <!-- CV Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="view_cv">CV</h4>
+                  </div>
+                  <div class="modal-body">
+                    <h3>Employment History</h3>
+                    <p id="job-content"></p>
+                    <h3>Education History</h3>
+                    <p id="education-content"></p>
+                    <div class="container">
+                      <div class="row">
+                        <h3>Skills</h3>
+                      </div>
+                      <div class="row">
+                        <!--<div class="col-sm-4">-->
+                          <div id="skills-content"></div>
+                          <!-- Uncomment this area to see how it should appear
+                          <div class="progress">
+				                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 80%;" data-toggle="tooltip" data-placement="top" title="CSS / CSS3">
+					                    <span class="progress-type">CSS / CSS3</span>
+				                    </div>
+	    	                  </div>
+	    	                  -->
+
+                        <!--</div>-->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div><!-- ./modal-content -->
+              </div><!-- ./modal-dialog -->
+            </div><!-- ./modal -->
+            
+            <div class="modal fade" id="edit-cv-modal" role="dialog">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="edit-cv">CV</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p id="edit-fields"></p>
+
+              </div>
+              <div class="modal-footer">
+                <button type="submit" id="save-edit-cv" class="btn btn-default" data-dismiss="modal">Save</button>
+                <button type="button" id="close-edit-cv" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- ./modal-content -->
+          </div><!-- ./modal-dialog -->
+        </div><!-- ./modal -->
+
+            <!-- Connections Modal -->
+            <div class="cd fade" id="connectionsModal" tabindex="-1" role="dialog" aria-labelledby="connectionsModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <div class="d">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Connections</h4>
+                  </div>
+
+                  <div class="modal-body amf">
+                    <div class="uq">
+                      <ul class="qo cj ca">
+                        <div><p id="connections-content"></p></div>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div><!-- ./gz middle area -->
+
+          <!-- right area -->
+          <div class="gn">
+
+            <!-- so this i just put here to get people to fill out their profile -->
+            <!-- this wont appear when you are viewing someone elses profile -->
+            <!-- alert box -->
+            <div id="update-image-box"class="qv rc alu ss">
+
+              <center><h5>Update Profile Picture</h5></center>
+              <div class="input-group">
+                    <input type="file" class="form-control" id="profile-pic-input">
+                    <div class="fj">
+                      <button id="profile-pic-submit" type="submit" class="cg fm">
+                        <span class="h">Post</span>
+                      </button>
+                    </div>
+                  </div>
+            </div>
+            <!-- ./ alert box -->
+
+            <!-- recommendations box -->
+            <div class="qv rc alu ss">
+              <div class="qw">
+              <h5 class="ald">Recommendations</h5>
+              <ul id="recommendations-list" class="qo anx">
+
+                <!-- Recommendations is not yet added into the js file once its added can remove this hardcoded code -->
+                <!-- http://www.textfixer.com/tools/remove-line-breaks.php -->
+                <!-- Go to that site and copy this chunk of code -->
+                <!-- add it into the textbox and click remove line breaks and pragraph breaks -->
+                <!-- and then click the button remove line breaks and copy that code for the js file -->
+                <!-- you cant have line breaks in the js file otherwise the js file just breaks so that tool will help you -->
+                <!--
+                <li class="qf">
+                  <a class="qj" href="#">
+                    <img
+                      class="qh cu"
+                      src="../img/propic1.jpg">
+                  </a>
+                  <div class="qg">
+                    <strong>Bill Gates</strong>
+                    <div class="aoa">
+                      <button class="cg ts fx">
+                        <span class="h vc"></span> Follow</button>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li class="qf">
+                  <a class="qj" href="#">
+                    <img
+                      class="qh cu"
+                      src="../img/propic2.jpg">
+                  </a>
+                  <div class="qg">
+                    <strong>Jeff Weiner</strong>
+                    <div class="aoa">
+                      <button class="cg ts fx">
+                        <span class="h vc"></span> Follow</button></button>
+                    </div>
+                  </div>
+                </li>
+                -->
+                <!-- ./End of hardcoded code for recommendations -->
+                <!-- after hard codeded area is removed just add a div tag similar to the connections box -->
+                <!-- <div id="connections-content"></div> -->
+
+              </ul><!-- ./qo anx -->
+              </div><!-- ./qw -->
+            </div><!-- ./qv rc alu ss -->
+            <!-- ./ recommendations box -->
+
+            <!-- job application status -->
+            <div class="qv rc aok">
+              <div class="qw">
+                <h5>Job Applications</h5>
+                <div id="user-jobs"></div>
+              </div>
+            </div>
+            <!-- ./ job application status -->
+
+            <!-- credit box -->
+            <div class="qv rc aok">
+              <div class="qw">
+                © 2016 CVConnect Team
+              </div>
+            </div>
+            <!-- ./credit box -->
+
+          </div><!-- ./gn right area -->
+
+        </div><!-- ./gc -->
+      </div><!-- ./by amt -->
+
+    </div><!-- ./style -->
+
+    <!-- JavaScript placed at the end so the pages load faster -->
+    <!-- ===================================================== -->
+    <!-- Bootstrap -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Form Helpers -->
+    <script src="../js/bootstrap-formhelpers.min.js"></script>
+    <script src="../js/chart.js"></script>
+    <!--<script src="../js/toolkit.js"></script>-->
+    <!--<script src="../js/application.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+  </body>
+</html>

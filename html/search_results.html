@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Search Results</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/global_vars.js"></script>
+    <script src="../js/search_results.js"></script>
+    <script src="../js/logout.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../bootstrap/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/register.css" rel="stylesheet">
+    <link href="../css/toolkit.css" rel="stylesheet">
+    <link href="../css/application.css" rel="stylesheet">
+
+    <!-- Bootstrap form helpers taken from http://js.nicdn.de/bootstrap/formhelpers/docs/country.html -->
+    <!-- Bootstrap Form Helpers -->
+    <link href="../css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+    
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" id="cvconnect-banner" href="#">CVConnect</a>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a id="homelink" href="#">Home</a></li>
+                  <li><a id="profile-link"href="#">Profile</a></li>
+                  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Jobs
+              </a> 
+              <ul class="dropdown-menu" aria-labelledby="settings">
+                <li id="job-postings"><a href="#">Job Postings</a></li>
+                <li id="create-new-job"><a href="#">Create New Job</a></li>
+              </ul>
+            </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      Settings
+                    </a> 
+                    <ul class="dropdown-menu" aria-labelledby="settings">
+                      <li id="edit-settings"><a href="#">Edit Details</a></li>
+                      <li id="logout"><a href="#">Logout</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                  <input id="search-bar" type="text" class="form-control" placeholder="Search...">
+                  <button id="submit-search" type="submit" name="submit-search">Search</button>
+                </form>
+              </div><!-- ./navbar-collapse --> 
+            </div><!-- ./container-fluid -->
+          </nav>
+          
+            <div class="by amt">
+              <div class="gc">
+                <!-- middle area -->
+                <div class="gz">
+                  <ul class="ca qo anx">
+            
+                    <div class="uq">
+                      <ul class="qo cj ca">
+                        <li class="b">
+                          <div class="qf">
+                            <div class="qg">
+                              <h1>Search Results</h1>
+                            </div>
+                            <div class="checkbox-inline checkbox-primary">
+                              <input id="query-profiles" type="checkbox" checked="">
+                              <label for="query-profiles">
+                                Profile Name
+                              </label>
+                            </div>
+                            <div class="checkbox-inline checkbox-primary">
+                              <input id="query-jobs" type="checkbox" checked="">
+                              <label for="query-jobs">
+                                Job Postings
+                              </label>
+                            </div>
+                            <div class="checkbox-inline checkbox-primary">
+                              <input id="query-skills" type="checkbox" checked="">
+                              <label for="query-skills">
+                                Profile Skills
+                              </label>
+                            </div>
+                            <div class="checkbox-inline checkbox-primary">
+                              <input id="query-locations" type="checkbox" checked="">
+                              <label for="query-locations">
+                                Profile Location
+                              </label>
+                            </div>
+                          </div>
+                        </li>
+                        <div id="search-results"></div>
+                      </ul><!-- ./qo cj ca -->
+                    </div><!-- ./uq -->
+            
+                  </ul><!-- ./ca qo anx -->    
+                </div><!-- ./gz middle area -->
+              </div><!-- ./gc -->
+            </div><!-- ./by amt --> 
+          
+        </div> <!-- /cover-container -->
+      </div> <!-- /site-wrapper-inner -->
+    </div> <!-- /siter-wrapper -->
+    
+
+    <!-- JavaScript placed at the end so the pages load faster -->
+    <!-- ===================================================== -->
+    <!-- Bootstrap -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Form Helpers -->
+    <script src="../js/bootstrap-formhelpers.min.js"></script>
+
+  </body>
+</html>

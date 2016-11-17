@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>Display Job</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/global_vars.js"></script>
+    <script src="../js/job_display.js"></script>
+    <script src="../js/logout.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../bootstrap/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/toolkit.css" rel="stylesheet">
+    <link href="../css/job.css" rel="stylesheet">
+    
+    <!-- Bootstrap form helpers taken from http://js.nicdn.de/bootstrap/formhelpers/docs/country.html -->
+    <!-- Bootstrap Form Helpers -->
+    <link href="../css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" id="cvconnect-banner" href="#">CVConnect</a>
+        </div>
+        
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="homelink" href="#">Home</a></li>
+            <li><a id="profile-link" href="#">Profile</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Jobs
+              </a> 
+              <ul class="dropdown-menu" aria-labelledby="settings">
+                <li id="job-postings"><a href="#">Job Postings</a></li>
+                <li id="create-new-job"><a href="#">Create New Job</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Settings
+              </a> 
+              <ul class="dropdown-menu" aria-labelledby="settings">
+                <li id="edit-settings"><a href="#">Edit Details</a></li>
+                <li id="logout"><a href="">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input id="search-bar" type="text" class="form-control" placeholder="Search...">
+            <button id="submit-search" type="submit" name="submit-search">Search</button>
+          </form>
+        </div><!-- ./navbar-collapse --> 
+      </div><!-- ./container-fluid -->
+    </nav>
+    <br><br><br>
+
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li id="job-listing-tab" class="active"><a data-toggle="tab" href="#job_listing">Job Listing</a></li>
+        <li id="edit-listing-tab"><a data-toggle="tab" href="#edit_listing">Edit Listing</a></li>
+        <li id="applications-tab"><a data-toggle="tab" href="#applications">Applications</a></li>
+      </ul><!--nav nav-tabs-->
+
+      <div class="tab-content">
+        <div id="job_listing" class="tab-pane fade in active">
+          <!--<h2 id="position"></h2>
+          <h3 id="company"></h3>
+          <h4 id="compensation"></h4>
+          <p id="description" class="col-sm-12 col-md-9 col-lg-6"></p>
+          <button type="button" id="apply" class="btn btn-primary">Apply</button>
+ -->
+          <div id="job_container" class="jobcontainer">
+            <div class="job-listing job-listing--featured">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="row">
+                    <!--<div class="col-xs-2"><img src="../img/apple.png" alt="AirBnb " class="img-responsive"></div>-->
+                    <div class="col-xs-10">
+
+                      <h4 id="job__position" class="job__position"></h4>
+                      <h5 id="job__company" class="job__company"></h5>
+                      <p id="job__description"></p>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-10 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-2">
+                  <p id="posted-time"></p>
+                </div>
+                <div class="col-xs-10 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3">
+                  <button type="button" id="apply" class="btn btn-primary">Apply</button>
+                </div>
+              </div><!-- ./row -->
+            </div><!-- ./job-listing -->
+          </div><!-- ./jobcontainer -->
+        </div><!--job_listing-->
+                
+        <div id="edit_listing" class="tab-pane fade">
+          <div class="col-sm-12 col-lg-8 col-md-10">
+            <form class="form" method="PATCH" id="job_edit" role="form">
+              <div class="form-group">
+                <label for="position" class="control-label">Position</label>
+                <input type="text" class="form-control input-md" id="position" placeholder="e.g. IT Specialist" required autofocus>
+              </div> 
+              <div class="form-group">
+                <label for="company" class="control-label">Company</label>
+                <input type="text" class="form-control" id="company" placeholder="e.g. Elgoog" required>
+              </div>
+              <div class="form-group">
+                <label for="compensation" class="control-label">Compensation/Salary</label>
+                <input type="text" class="form-control" id="compensation" placeholder="e.g. $65,536 p.a. with health care and antivirus protection" required>
+              </div>
+              <div class="form-group">
+                <label for="description" class="control-label">Description</label>
+                <textarea class="form-control" id="description" rows=20 required></textarea>
+              </div>
+              <br>
+              <div class="form-group">
+                <div class="col-sm-offset-11 col-md-offset-11 col-lg-offset-11">
+                  <button type="submit" id="submit" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </form> <!-- /form-horizontal -->
+            
+          </div>
+        </div><!-- edit-listing-->
+        <div id="applications" class="tab-pane fade">
+          <br>
+          <div id="application_list" class="container-fluid">
+
+          </div><!-- container-fluid-->
+        </div> <!--applications-->
+      </div><!-- tab-content -->
+    </div><!-- container -->
+    
+    
+    <!-- JavaScript placed at the end so the pages load faster -->
+    <!-- ===================================================== -->
+    <!-- Bootstrap -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Form Helpers -->
+    <script src="../js/bootstrap-formhelpers.min.js"></script>
+    
+  </body>
+</html>

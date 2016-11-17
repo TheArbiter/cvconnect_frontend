@@ -1,0 +1,56 @@
+.pages {
+    text-align:center;
+}
+.job-listing {
+	border:solid 1px #eee;
+	border-bottom:none;
+	padding-top:30px;
+	padding-bottom:10px;
+	padding-left:19px;
+	padding-right:15px;
+	-webkit-transition:all .2s ease-out;
+	-moz-transition:all .2s ease-out;
+	transition:all .2s ease-out
+}
+.job-listing:before,.job-listing:after {
+	content:" ";
+	display:table
+}
+.job-listing:after {
+	clear:both
+}
+.job-listing.job-listing--featured {
+	border-left:solid 5px #ff7473;
+	padding-left:15px
+}
+.job-listing.job-listing--last {
+	border-bottom:solid 1px #eee;
+	margin-bottom:40px
+}
+.job-listing:hover {
+	background:#fafafa
+}
+.job-content {
+	padding:0 15px
+}
+.job__title {
+	margin-top:0
+}
+.job__star__link {
+	color:#999
+}
+.job__star__link.active,.job__star__link:hover {
+	color:#ff7473
+}
+.job__location {
+	margin-right:5px;
+	color:#999
+}
+.job__star {
+	text-align:right
+}
+
+.jobcontainer {
+    background-color: white;
+}
+
