@@ -278,11 +278,11 @@ $(document).ready(function(){
 
         $.getJSON(apiurl + "/api/profiles/" + username + "/image/", function(result){
 
-            $("#profile-image-slot").attr("src", "../../" + result.image);
+            $("#profile-image-slot").attr("src", result.image);
             $("#profile-image-slot").attr("height", 100);
             $("#profile-image-slot").attr("width", 100);
 
-            $("#profile-image-feed").attr("src", "../../" + result.image);
+            $("#profile-image-feed").attr("src", result.image);
             $("#profile-image-feed").attr("height", 50);
             $("#profile-image-feed").attr("width", 50);
 
@@ -380,7 +380,7 @@ $(document).ready(function(){
                         "<span class=\"h vc\"></span> Unfollow</button></p>"
             );
 
-            $("#connection-" + connection.id).attr("src", "../../" + connection.image);
+            $("#connection-" + connection.id).attr("src", connection.image);
             $("#connection-" + connection.id).attr("height", 50);
             $("#connection-" + connection.id).attr("width", 50);
         }
@@ -411,7 +411,7 @@ $(document).ready(function(){
                 "</li>"
             );
 
-            $("#rec-" + recommendation.id).attr("src", "../../" + recommendation.image);
+            $("#rec-" + recommendation.id).attr("src", recommendation.image);
             $("#rec-" + recommendation.id).attr("height", 50);
             $("#rec-" + recommendation.id).attr("width", 50);
         }
@@ -949,11 +949,11 @@ $(document).ready(function(){
             }).success(function(im){
                 console.log("Successful Image Creation:", im);
 
-                $("#profile-image-slot").attr("src", "../../" + im.image);
+                $("#profile-image-slot").attr("src", im.image);
                 $("#profile-image-slot").attr("height", 100);
                 $("#profile-image-slot").attr("width", 100);
 
-                $("#profile-image-feed").attr("src", "../../" + im.image);
+                $("#profile-image-feed").attr("src", im.image);
                 $("#profile-image-feed").attr("height", 50);
                 $("#profile-image-feed").attr("width", 50);
             });
