@@ -30,7 +30,7 @@ $(document).ready(function(){
         });
     } else {
         $("#homelink").click(function(){
-            window.location.href = "../index.html";
+            window.location.href = "../home.html";
         });
         
         $("#sign-up").click(function(){
@@ -38,11 +38,11 @@ $(document).ready(function(){
         });
         
         $("#cvconnect-banner").click(function(){
-            window.location.href = "../index.html";
+            window.location.href = "../home.html";
         });
         
         $("#return-home").click(function(){
-            window.location.href = "../index.html";
+            window.location.href = "../home.html";
         });
     }
     return false;

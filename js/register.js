@@ -112,10 +112,10 @@ $(document).ready(function(){
     });
 
     $("#homelink").click(function(){
-        window.location.href = "../index.html";
+        window.location.href = "../home.html";
     });
     
     $("#cvconnect-banner").click(function(){
-        window.location.href = "../index.html";
+        window.location.href = "../home.html";
     });
 });

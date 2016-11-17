@@ -55,13 +55,13 @@ $(document).ready(function(){
         }).success(function(user_response){
             console.log("Successful Signup:", user_response);
             alert("Password successfully changed.");
-            window.location.href = "../index.html";
+            window.location.href = "../home.html";
         });
         return false;
     });
     
     $("#homelink").click(function(){
-        window.location.href = "../index.html";
+        window.location.href = "../home.html";
     });
     
     $("#sign-up").click(function(){
@@ -69,6 +69,6 @@ $(document).ready(function(){
     });
     
     $("#cvconnect-banner").click(function(){
-        window.location.href = "../index.html";
+        window.location.href = "../home.html";
     });
 });
