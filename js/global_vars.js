@@ -1,1 +1,1 @@
-var apiurl = 'http://cvconnect-api.herokuapp.com/'
+var apiurl = 'https://cvconnect-api.herokuapp.com/'
